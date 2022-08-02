@@ -4,10 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Profile-Builder</title>
-    
 </head>
 <body>
-    <h1>Deploy test</h1>
+  <div class="container">
+      <form class="input-form" onkeyup="handleForm(event)">
+        <div>
+        <input type="text" id="fname" placeholder="First Name">
+        <input type="text" id="lname" placeholder="Last Name">
+        </div>
+    <div>
+     <input type="text" id="city" placeholder="City">
+    <input type="text" id="state" placeholder="State">
+    </div>
+    <div>
+    <input type="text" id="degree" placeholder="Highest qualification">
+    <input type="text" id="cname" placeholder="College / University">
+    </div>
+    </form>
+
+    <div class="display">
+        <span>Hi, my name is<span id="fname-span"></span><span id="lname-span"></span><span>.</span></span><span> I am from</span>
+    </div>
+  </div>
 </body>
 </html>
+
+<script src="./script.js"></script>
