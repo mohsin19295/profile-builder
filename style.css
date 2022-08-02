@@ -77,6 +77,26 @@ form div :where(input, select) {
     border-radius: 50%;
 }
 
+.translated-ltr {
+    margin-top: -40px;
+}
+
+.translated-ltr {
+    margin-top: -40px;
+}
+
+.goog-te-banner-frame {
+    display: none;
+    margin-top: -20px;
+}
+
+.goog-logo-link {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    color: transparent !important;
+}
 
 @media screen and (max-width:768px) {
     form div {
