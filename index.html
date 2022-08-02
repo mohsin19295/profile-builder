@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,28 +8,41 @@
     <link rel="stylesheet" href="./style.css">
     <title>Profile-Builder</title>
 </head>
-<body>
-  <div class="container">
-      <form class="input-form" onkeyup="handleForm(event)">
-        <div>
-        <input type="text" id="fname" placeholder="First Name">
-        <input type="text" id="lname" placeholder="Last Name">
-        </div>
-    <div>
-     <input type="text" id="city" placeholder="City">
-    <input type="text" id="state" placeholder="State">
-    </div>
-    <div>
-    <input type="text" id="degree" placeholder="Highest qualification">
-    <input type="text" id="cname" placeholder="College / University">
-    </div>
-    </form>
 
-    <div class="display">
-        <span>Hi, my name is<span id="fname-span"></span><span id="lname-span"></span><span>.</span></span><span> I am from</span>
+<body>
+    <div id="main">
+        <h1>Profile Builder</h1>
+        <div class="container">
+            <form class="input-form" onkeyup="handleForm(event)">
+                <div>
+                    <input type="text" id="fname" placeholder="First Name">
+                    <input type="text" id="lname" placeholder="Last Name">
+                </div>
+                <div>
+                    <input type="text" id="city" placeholder="City">
+                    <input type="text" id="state" placeholder="State">
+                </div>
+                <div>
+                    <input type="text" id="hdegree" placeholder="Qualification">
+                    <select id="selectOption">
+                        <option value="school">school</option>
+                        <option value="university">university</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="text" id="cname" placeholder="College / University">
+                </div>
+            </form>
+            <div class="display">
+                <span>Hi, my name is<span id="fname-span"></span><span id="lname-span"></span></span><span> I am
+                    from</span><span id="city-span"></span><span id="state-span"></span><span> I have completed
+                    my</span><span id="hdegree-span"></span><span> from</span><span id="cname-span"></span><span
+                    id="option-span"></span>
+            </div>
+        </div>
     </div>
-  </div>
 </body>
+
 </html>
 
 <script src="./script.js"></script>
