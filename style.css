@@ -2,6 +2,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    scroll-behavior: smooth;
 }
 
 #main {
@@ -30,6 +31,11 @@ h1 {
     padding: 1rem;
     width: 50%;
     border-radius: 10px;
+    box-shadow: 4px 4px 12px #2e2e2e;
+}
+
+.container>*:hover{
+    box-shadow: 1px 1px 4px #2e2e2e;
 }
 
 .container form {
@@ -37,21 +43,31 @@ h1 {
     flex-direction: column;
     gap: 1rem;
 }
-#readUrl{
-    padding: 6px 0
-}
 
 .container form div {
     display: flex;
     gap: 1rem;
 }
 
-form div :where(input, select) {
+form div :where(input, select):not(#readUrl) {
     align-items: center;
     width: 100%;
     height: 2rem;
     outline: none;
-    padding: 0 5px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 4px 4px 12px #2e2e2e;
+}
+
+form div :where(input, select):hover:not(#readUrl){
+    box-shadow: 1px 1px 5px #2e2e2e;
+}
+
+#readUrl {
+    padding: 6px 0;
+    width: 100%;
+    background-color: transparent;
 }
 
 .container .display {
@@ -98,19 +114,20 @@ form div :where(input, select) {
     color: transparent !important;
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
     form div {
         flex-direction: column;
     }
-}
-
-@media screen and (max-width:539px) {
-    .container {
-        flex-direction: column-reverse;
-        gap: 1rem;
-    }
-
-    .container >* {
-        width: 100%;
-    }
+          .container {
+              flex-direction: column-reverse;
+              gap: 1rem;
+          }
+    
+          .container>* {
+              width: 100%;
+          }
+    
+          #main {
+              margin: auto
+          }
 }
