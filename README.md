@@ -1,3 +1,5 @@
-# profile-builder
-A profile builder application that allows users to create their profiles with multiple language options. It also allows you to save users' details and create a list of them.
-![Screenshot from 2023-05-27 01-02-59](https://github.com/mohsin19295/profile-builder/assets/86405170/ab6ed79d-136e-4985-aaf0-874dce8fa442)
+# <p align="center">Profile-Builder</p>
+
+#### <p>The project was built using `HTML`, `CSS`, and `javaScript`. It is fully responsive to any device.</p>
+
+![Screenshot from 2023-05-27 01-13-57](https://github.com/mohsin19295/profile-builder/assets/86405170/1415e2b6-9da3-4559-8986-9cfc16c3af54)
