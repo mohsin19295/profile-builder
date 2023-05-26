@@ -34,6 +34,7 @@ h1 {
     box-shadow: 4px 4px 12px #2e2e2e;
 }
 
+
 .container>*:hover{
     box-shadow: 1px 1px 4px #2e2e2e;
 }
@@ -114,6 +115,61 @@ form div :where(input, select):hover:not(#readUrl){
     color: transparent !important;
 }
 
+#translate-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#save{
+    padding: 5px 10px;
+    border: 0;
+    box-shadow: 3px 3px 5px black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+#data{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 5px 20px;
+}
+
+.singleDiv{
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    padding: 5px 10px;
+    background-color: #1313134a;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.singleDiv img{
+    max-width: 60px;
+    width: 8%;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.singleDiv h4{
+    width: 20%;
+}
+
+.singleDiv h4, p{
+    text-align: center;
+}
+
 @media screen and (max-width:767px) {
     form div {
         flex-direction: column;
@@ -129,5 +185,10 @@ form div :where(input, select):hover:not(#readUrl){
     
           #main {
               margin: auto
+          }
+
+          .singleDiv img{
+            height: 90%;
+            width: 10%;
           }
 }
