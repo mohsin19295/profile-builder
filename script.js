@@ -104,7 +104,6 @@ save.addEventListener("click", () => {
   let content =
     initialSpan +
     fnameSpan.innerHTML +
-    fromSpan +
     lnameSpan.innerHTML +
     fromSpan +
     citySpan.innerHTML +
