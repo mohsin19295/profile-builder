@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css?v=4">
     <title>Profile Builder</title>
 </head>
 
@@ -15,14 +15,10 @@
             <p>Fill in your details and the resume updates live. Everything is saved in this browser.</p>
         </div>
         <div class="toolbar">
-            <button type="button" class="btn" data-cmd="sample">Load sample</button>
-            <button type="button" class="btn" data-cmd="clear">Clear all</button>
-            <button type="button" class="btn" data-cmd="import">Import JSON</button>
-            <button type="button" class="btn" data-cmd="export-json">Export JSON</button>
+            <button type="button" class="btn" data-cmd="sample">Reset to default</button>
             <button type="button" class="btn primary" data-cmd="export-word">Download Word</button>
             <button type="button" class="btn primary" data-cmd="export-pdf"
                 title="Opens the print dialog. Choose 'Save as PDF' as the destination.">Download PDF</button>
-            <input type="file" id="importInput" accept="application/json,.json" hidden>
         </div>
     </header>
 
@@ -56,7 +52,7 @@
 
     <div id="toast" role="status" aria-live="polite"></div>
 
-    <script src="./script.js"></script>
+    <script src="./script.js?v=8"></script>
 </body>
 
 </html>

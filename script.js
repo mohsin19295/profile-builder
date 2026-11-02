@@ -3,6 +3,7 @@
 const STORAGE_KEY = 'profile-builder:v1';
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const TEMPLATES = ['classic', 'modern'];
+const OPTIONAL_SECTIONS = ['projects', 'certifications', 'languages', 'achievements', 'interests'];
 const WORD_FONTS = {
   sans: 'Calibri, Arial, sans-serif',
   serif: "Georgia, 'Times New Roman', serif",
@@ -117,6 +118,7 @@ const LIST_SECTIONS = {
 };
 
 const LIST_KEYS = Object.keys(LIST_SECTIONS);
+const SUMMARY_TITLE = 'Professional Summary';
 
 const uid = () => Math.random().toString(36).slice(2, 10);
 
@@ -139,7 +141,13 @@ function defaultState() {
   const state = {
     personal: Object.fromEntries(PERSONAL_FIELDS.map((f) => [f.key, ''])),
     interests: '',
-    settings: { template: 'classic', font: 'sans', accent: '#1f6f78', showPhoto: true },
+    settings: {
+      template: 'classic',
+      font: 'sans',
+      accent: '#1f6f78',
+      showPhoto: true,
+      sections: Object.fromEntries(OPTIONAL_SECTIONS.map((key) => [key, true])),
+    },
   };
   state.personal.photo = '';
   for (const key of LIST_KEYS) state[key] = [];
@@ -149,57 +157,59 @@ function defaultState() {
 function sampleData() {
   return {
     personal: {
-      fullName: 'Aarav Sharma',
-      title: 'Senior Frontend Engineer',
-      email: 'aarav.sharma@example.com',
-      phone: '+91 98765 43210',
-      location: 'Gurugram, Haryana',
-      linkedin: 'linkedin.com/in/aaravsharma',
-      github: 'github.com/aaravsharma',
-      website: 'aaravsharma.dev',
-      summary: 'Frontend engineer with 5+ years of experience building fast, accessible web applications with React, TypeScript, and Next.js. Led the move to a shared design system across four products and enjoy mentoring developers and improving performance.',
+      fullName: 'Mohammad Mohsin',
+      title: 'Senior Software Engineer',
+      email: 'mohsin19295@gmail.com',
+      phone: '',
+      location: 'Gurgaon, Haryana',
+      linkedin: '',
+      github: 'github.com/mohsin19295',
+      website: '',
+      summary: 'Senior Software Engineer with over 5 years of experience specializing in React.js, TypeScript, and high-fidelity UI design. Experienced in building large-scale enterprise platforms across GovTech, Telecom, and FinTech domains, with a focus on scalable frontend architecture, performance, and user experience.',
     },
     experience: [
       {
-        role: 'Senior Frontend Engineer', company: 'Nimbus Fintech', location: 'Gurugram', type: 'Full-time',
-        start: '2022-04', end: '', current: true,
-        description: 'Lead a team of 5 engineers building the customer dashboard used by 200k+ users\nBuilt a design system in React and TypeScript adopted by 4 product teams\nImproved Largest Contentful Paint from 4.1s to 1.8s with code splitting and image optimization',
+        role: 'Senior Software Developer', company: 'Programming.com', location: '', type: 'Full-time',
+        start: '2025-10', end: '', current: true,
+        description: 'Lead frontend delivery for the NHAI DataLake 3.0 platform\nOwn the end-to-end UI architecture across 8+ enterprise modules\nBuilt reusable application-level infrastructure shared across multiple government tenants\nImproved API load times using virtualization and state persistence',
       },
       {
-        role: 'Frontend Developer', company: 'BrightApps Solutions', location: 'Noida', type: 'Full-time',
-        start: '2019-07', end: '2022-03', current: false,
-        description: 'Developed 30+ features for a telecom self-care portal in React and Redux\nIntroduced unit testing with Jest and React Testing Library, reaching 75% coverage',
+        role: 'Digital Engineer', company: 'DGLiger Consulting Pvt Ltd', location: '', type: 'Full-time',
+        start: '2024-12', end: '2025-09', current: false,
+        description: 'Built buyer, seller, and admin dashboards in Next.js and TypeScript\nImplemented role-based access with OTP and email verification\nRefactored legacy screens into TypeScript for clients like Airtel\nIntegrated live pricing, analytics, and an AI chatbot with existing APIs',
       },
     ],
     education: [
       {
-        degree: 'B.Tech', field: 'Computer Science', institution: 'Delhi Technological University', location: 'New Delhi',
-        grade: '8.4 CGPA', start: '2015-08', end: '2019-06', current: false, description: '',
+        degree: 'B.Tech', field: 'Computer Science & Engineering', institution: 'Aligarh College of Engineering & Technology', location: 'Aligarh, Uttar Pradesh',
+        grade: '7.8 CGPA', start: '2017-08', end: '2021-06', current: false,
+        description: 'Coursework: Data Structures & Algorithms, DBMS, Operating Systems, Computer Networks, Web Technologies\nFinal-year project: full-stack web application built with the MERN stack',
       },
     ],
     projects: [
       {
-        name: 'Interview Prep App', role: 'Creator', tech: 'React, JavaScript, CSS', link: 'github.com/aaravsharma/interview-prep',
-        start: '2024-01', end: '2024-03',
-        description: 'Searchable question bank with 300+ frontend interview questions\nLocal answer editing with JSON export',
+        name: 'Full-Stack Interview Preparation', role: '', tech: 'React, JavaScript, CSS',
+        link: 'github.com/mohsin19295/full-stack_preparation_web', start: '', end: '',
+        description: 'Searchable bank of interview questions and answers across React, JavaScript, Next.js, TypeScript, Node.js, GraphQL, and AI\nOn-device answer editing with JSON export',
+      },
+      {
+        name: 'Profile Builder', role: '', tech: 'HTML, CSS, JavaScript',
+        link: 'github.com/mohsin19295/profile-builder', start: '', end: '',
+        description: 'Resume builder with live preview, multiple templates, and PDF and Word export',
       },
     ],
     skills: [
-      { category: 'Frontend', items: 'React, TypeScript, Next.js, Redux Toolkit, HTML, CSS, Tailwind CSS' },
-      { category: 'Backend', items: 'Node.js, Express, GraphQL, MongoDB' },
-      { category: 'Tools', items: 'Git, Jest, Playwright, Webpack, Vite, Figma' },
+      { category: 'Frontend', items: 'React.js, TypeScript, JavaScript (ES6+), Next.js, Redux, HTML5, CSS3' },
+      { category: 'Backend & APIs', items: 'Node.js, Express.js, GraphQL, Apollo Client, REST APIs, MongoDB' },
+      { category: 'Tools', items: 'Git, Webpack, Babel, Chrome DevTools' },
     ],
     certifications: [
-      { name: 'AWS Certified Developer - Associate', issuer: 'Amazon Web Services', date: '2023-05', credentialId: '', link: '' },
+      { name: 'Meta Front-End Developer Professional Certificate', issuer: 'Coursera', date: '2023-06', credentialId: '', link: '' },
+      { name: 'JavaScript Algorithms and Data Structures', issuer: 'freeCodeCamp', date: '2022-03', credentialId: '', link: '' },
     ],
-    languages: [
-      { language: 'English', proficiency: 'Fluent' },
-      { language: 'Hindi', proficiency: 'Native' },
-    ],
-    achievements: [
-      { title: 'Employee of the Quarter', date: '2023-09', description: 'Recognized for delivering the dashboard redesign two weeks ahead of schedule' },
-    ],
-    interests: 'Open source, Chess, Travel',
+    languages: [],
+    achievements: [],
+    interests: '',
   };
 }
 
@@ -220,6 +230,9 @@ function normalize(data) {
   if (settings.font in WORD_FONTS) base.settings.font = settings.font;
   if (/^#[0-9a-f]{6}$/i.test(settings.accent || '')) base.settings.accent = settings.accent;
   if (typeof settings.showPhoto === 'boolean') base.settings.showPhoto = settings.showPhoto;
+  for (const key of OPTIONAL_SECTIONS) {
+    if (typeof settings.sections?.[key] === 'boolean') base.settings.sections[key] = settings.sections[key];
+  }
 
   for (const key of LIST_KEYS) {
     if (!Array.isArray(src[key])) continue;
@@ -239,9 +252,11 @@ function normalize(data) {
 function loadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return normalize(JSON.parse(raw));
+    const saved = raw && JSON.parse(raw);
+    // Browsers that only ever saw the old placeholder profile get the new default instead.
+    if (saved && saved.personal?.fullName !== 'Aarav Sharma') return normalize(saved);
   } catch {
-    // Fall through to sample data if storage is unavailable or corrupted.
+    // Fall through to the default profile if storage is unavailable or corrupted.
   }
   return normalize(sampleData());
 }
@@ -319,7 +334,8 @@ function contactItems(p) {
 // A template-independent view of the resume, shared by the preview and the Word export.
 function buildModel(s) {
   const p = s.personal;
-  const filled = (key) => s[key].filter(hasContent);
+  const included = (key) => !OPTIONAL_SECTIONS.includes(key) || s.settings.sections[key];
+  const filled = (key) => (included(key) ? s[key].filter(hasContent) : []);
   const sub = (...parts) => parts.map((part) => String(part || '').trim()).filter(Boolean);
 
   return {
@@ -354,7 +370,7 @@ function buildModel(s) {
       .map((it) => ({ category: it.category.trim(), items: splitList(it.items) }))
       .filter((group) => group.items.length),
     languages: filled('languages').map((it) => ({ name: it.language.trim(), level: it.proficiency })),
-    interests: splitList(s.interests),
+    interests: included('interests') ? splitList(s.interests) : [],
   };
 }
 
@@ -363,15 +379,15 @@ function buildModel(s) {
 const section = (title, inner) => `<section class="r-section"><h2>${escapeHtml(title)}</h2>${inner}</section>`;
 
 function entryHtml(entry) {
-  const link = entry.link
-    ? ` <a class="r-link" href="${escapeHtml(entry.link.href)}">${escapeHtml(entry.link.text)}</a>`
-    : '';
   const sub = entry.sub.length ? `<p class="r-sub">${escapeHtml(entry.sub.join(' \u00B7 '))}</p>` : '';
+  const link = entry.link
+    ? `<p class="r-link"><a href="${escapeHtml(entry.link.href)}">${escapeHtml(entry.link.text)}</a></p>`
+    : '';
   const date = entry.date ? `<span class="r-date">${escapeHtml(entry.date)}</span>` : '';
   const bullets = entry.bullets.length
     ? `<ul class="r-bullets">${entry.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join('')}</ul>`
     : '';
-  return `<div class="r-entry"><div class="r-entry-head"><div><h3>${escapeHtml(entry.title)}${link}</h3>${sub}</div>${date}</div>${bullets}</div>`;
+  return `<div class="r-entry"><div class="r-entry-head"><div class="r-entry-main"><h3>${escapeHtml(entry.title)}</h3>${sub}${link}</div>${date}</div>${bullets}</div>`;
 }
 
 const entriesSection = (title, entries) => (entries.length ? section(title, entries.map(entryHtml).join('')) : '');
@@ -386,7 +402,7 @@ function buildResumeHtml(m, template) {
     ? `<ul class="r-contact">${m.contacts.map((c) => `<li>${c.href ? `<a href="${escapeHtml(c.href)}">${escapeHtml(c.text)}</a>` : escapeHtml(c.text)}</li>`).join('')}</ul>`
     : '';
 
-  const summary = m.summary ? section('Profile', `<p class="r-summary">${escapeHtml(m.summary).replace(/\n/g, '<br>')}</p>`) : '';
+  const summary = m.summary ? section(SUMMARY_TITLE, `<p class="r-summary">${escapeHtml(m.summary).replace(/\n/g, '<br>')}</p>`) : '';
   const languages = m.languages.length
     ? section('Languages', `<ul class="r-plain">${m.languages.map((l) => `<li><strong>${escapeHtml(l.name)}</strong>${l.level ? ` - ${escapeHtml(l.level)}` : ''}</li>`).join('')}</ul>`)
     : '';
@@ -412,7 +428,7 @@ function buildResumeHtml(m, template) {
     ? section('Skills', `<div class="r-skills">${m.skills.map((g) => `<p>${g.category ? `<strong>${escapeHtml(g.category)}:</strong> ` : ''}${escapeHtml(g.items.join(', '))}</p>`).join('')}</div>`)
     : '';
   return `<header class="r-header">${photo}<div>${name}${contacts}</div></header>`
-    + summary + experience + projects + education + skills + certifications + achievements + languages + interests;
+    + summary + skills + experience + projects + education + certifications + achievements + languages + interests;
 }
 
 function renderPreview() {
@@ -496,11 +512,31 @@ function personalPanel() {
   </details>`;
 }
 
+function optionalParts(key) {
+  if (!OPTIONAL_SECTIONS.includes(key)) return { cls: '', badge: '', toggle: '' };
+  const on = state.settings.sections[key];
+  return {
+    cls: on ? '' : ' is-off',
+    badge: `<span class="badge${on ? '' : ' off'}" data-badge="${key}">${on ? 'Optional' : 'Hidden'}</span>`,
+    toggle: `<label class="check section-toggle"><input type="checkbox" data-bind="settings.sections.${key}"${on ? ' checked' : ''}> Include this section on the resume</label>`,
+  };
+}
+
+function updateOptionalPanel(key) {
+  const on = state.settings.sections[key];
+  const badge = editor.querySelector(`[data-badge="${key}"]`);
+  badge.textContent = on ? 'Optional' : 'Hidden';
+  badge.classList.toggle('off', !on);
+  badge.closest('.panel').classList.toggle('is-off', !on);
+}
+
 function listPanel(key) {
   const cfg = LIST_SECTIONS[key];
-  return `<details class="panel"${cfg.open ? ' open' : ''}>
-    <summary>${escapeHtml(cfg.title)} <span class="count" data-count="${key}"></span></summary>
+  const opt = optionalParts(key);
+  return `<details class="panel${opt.cls}"${cfg.open ? ' open' : ''}>
+    <summary>${escapeHtml(cfg.title)} <span class="count" data-count="${key}"></span>${opt.badge}</summary>
     <div class="panel-body">
+      ${opt.toggle}
       ${cfg.hint ? `<p class="panel-hint">${escapeHtml(cfg.hint)}</p>` : ''}
       <div class="items" data-items="${key}"></div>
       <button type="button" class="btn small add-btn" data-action="add" data-list="${key}">+ ${escapeHtml(cfg.addLabel)}</button>
@@ -510,9 +546,13 @@ function listPanel(key) {
 
 function additionalPanel() {
   const field = { key: 'interests', label: 'Interests / hobbies (comma separated)', placeholder: 'Open source, Chess, Travel', full: true };
-  return `<details class="panel">
-    <summary>Interests</summary>
-    <div class="panel-body"><div class="grid">${fieldHtml(field, state.interests, 'data-bind="interests"')}</div></div>
+  const opt = optionalParts('interests');
+  return `<details class="panel${opt.cls}">
+    <summary>Interests ${opt.badge}</summary>
+    <div class="panel-body">
+      ${opt.toggle}
+      <div class="grid">${fieldHtml(field, state.interests, 'data-bind="interests"')}</div>
+    </div>
   </details>`;
 }
 
@@ -538,9 +578,17 @@ function renderEditor() {
   renderPhotoThumb();
 }
 
+const getPath = (obj, path) => path.split('.').reduce((value, key) => value?.[key], obj);
+
+function setPath(obj, path, value) {
+  const keys = path.split('.');
+  const last = keys.pop();
+  keys.reduce((target, key) => target[key], obj)[last] = value;
+}
+
 function syncDesignControls() {
   document.querySelectorAll('[data-bind^="settings."]').forEach((control) => {
-    const value = state.settings[control.dataset.bind.split('.')[1]];
+    const value = getPath(state, control.dataset.bind);
     if (control.type === 'checkbox') control.checked = value;
     else control.value = value;
   });
@@ -576,10 +624,10 @@ function handleInput(event) {
   const value = target.type === 'checkbox' ? target.checked : target.value;
 
   if (target.dataset.bind) {
-    const [group, key] = target.dataset.bind.split('.');
-    if (key) state[group][key] = value;
-    else state[group] = value;
-    if (target.dataset.bind === 'personal.fullName') renderPhotoThumb();
+    const path = target.dataset.bind;
+    setPath(state, path, value);
+    if (path === 'personal.fullName') renderPhotoThumb();
+    if (path.startsWith('settings.sections.')) updateOptionalPanel(path.split('.')[2]);
   } else if (target.dataset.key) {
     const { list, index, key } = target.dataset;
     const item = state[list][Number(index)];
@@ -673,25 +721,6 @@ function exportPdf() {
   window.print();
 }
 
-function exportJson() {
-  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
-  download(blob, `${fileBaseName()}.json`);
-}
-
-function importJson(file) {
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = () => {
-    try {
-      replaceState(normalize(JSON.parse(reader.result)));
-      toast('Profile imported.');
-    } catch {
-      toast('That file is not a valid Profile Builder JSON export.');
-    }
-  };
-  reader.readAsText(file);
-}
-
 // Word export: an MHTML document, which Word opens as a .doc with the photo embedded.
 
 function utf8ToBase64(text) {
@@ -709,16 +738,17 @@ function buildWordHtml(m, settings, photoSrc) {
   const accent = settings.accent;
   const muted = '#555555';
   const heading = (title) => `<p style="margin:14pt 0 5pt 0;padding-bottom:2pt;border-bottom:solid ${accent} 1.0pt;font-size:11pt;font-weight:bold;color:${accent};text-transform:uppercase;letter-spacing:.8pt">${escapeHtml(title)}</p>`;
-  const linkHtml = (link, size = '9.5pt') => (link
-    ? ` <a href="${escapeHtml(link.href)}" style="color:${accent};text-decoration:none;font-weight:normal;font-size:${size}">${escapeHtml(link.text)}</a>`
+  const linkHtml = (link) => (link
+    ? `<p style="font-size:9pt"><a href="${escapeHtml(link.href)}" style="color:${accent};text-decoration:none">${escapeHtml(link.text)}</a></p>`
     : '');
 
   const entry = (e) => `
     <table width="100%" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;margin-top:6pt">
       <tr>
         <td style="vertical-align:top;padding:0">
-          <p style="font-size:11pt;font-weight:bold;color:#111111">${escapeHtml(e.title)}${linkHtml(e.link)}</p>
+          <p style="font-size:11pt;font-weight:bold;color:#111111">${escapeHtml(e.title)}</p>
           ${e.sub.length ? `<p style="color:${muted};font-size:9.5pt">${escapeHtml(e.sub.join(' \u00B7 '))}</p>` : ''}
+          ${linkHtml(e.link)}
         </td>
         <td width="140" style="width:105pt;vertical-align:top;text-align:right;padding:0;color:${muted};font-size:9.5pt">${escapeHtml(e.date)}</td>
       </tr>
@@ -744,13 +774,13 @@ function buildWordHtml(m, settings, photoSrc) {
 
   const body = [
     header,
-    m.summary ? heading('Profile') + `<p>${escapeHtml(m.summary).replace(/\n/g, '<br>')}</p>` : '',
-    entries('Experience', m.experience),
-    entries('Projects', m.projects),
-    entries('Education', m.education),
+    m.summary ? heading(SUMMARY_TITLE) + `<p>${escapeHtml(m.summary).replace(/\n/g, '<br>')}</p>` : '',
     m.skills.length
       ? heading('Skills') + m.skills.map((g) => `<p style="margin-bottom:2pt">${g.category ? `<b>${escapeHtml(g.category)}:</b> ` : ''}${escapeHtml(g.items.join(', '))}</p>`).join('')
       : '',
+    entries('Experience', m.experience),
+    entries('Projects', m.projects),
+    entries('Education', m.education),
     entries('Certifications', m.certifications),
     entries('Achievements', m.achievements),
     m.languages.length
@@ -766,7 +796,7 @@ function buildWordHtml(m, settings, photoSrc) {
 <title>${escapeHtml(m.name || 'Resume')}</title>
 <!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]-->
 <style>
-  @page WordSection1 { size: 595.3pt 841.9pt; margin: 42pt 48pt 42pt 48pt; }
+  @page WordSection1 { size: 595.3pt 841.9pt; margin: 32pt 36pt 32pt 36pt; }
   div.WordSection1 { page: WordSection1; }
   body { font-family: ${WORD_FONTS[settings.font]}; font-size: 10.5pt; color: #222222; }
   p { margin: 0; }
@@ -829,9 +859,9 @@ document.addEventListener('input', handleInput);
 
 document.addEventListener('change', (event) => {
   const input = event.target;
-  if (input.id === 'photoInput') handlePhoto(input.files[0]);
-  if (input.id === 'importInput') importJson(input.files[0]);
-  if (input.type === 'file') input.value = '';
+  if (input.id !== 'photoInput') return;
+  handlePhoto(input.files[0]);
+  input.value = '';
 });
 
 document.addEventListener('click', (event) => {
@@ -854,18 +884,7 @@ document.addEventListener('click', (event) => {
       update();
       break;
     case 'sample':
-      if (confirm('Replace your current details with sample data?')) replaceState(normalize(sampleData()));
-      break;
-    case 'clear':
-      if (confirm('Clear all details? Export JSON first if you want a backup.')) {
-        replaceState(normalize({ settings: state.settings }));
-      }
-      break;
-    case 'import':
-      document.getElementById('importInput').click();
-      break;
-    case 'export-json':
-      exportJson();
+      if (confirm('Replace your current details with the default profile?')) replaceState(normalize(sampleData()));
       break;
     case 'export-word':
       exportWord();

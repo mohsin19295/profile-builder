@@ -162,6 +162,29 @@ textarea {
     display: none;
 }
 
+.badge {
+    padding: 1px 8px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.badge.off {
+    border-color: #f0c9c4;
+    background: #fdf1ef;
+    color: #b42318;
+}
+
+.section-toggle {
+    font-weight: 600;
+}
+
+.panel.is-off :is(.items, .add-btn, .panel-hint, .grid) {
+    opacity: 0.5;
+}
+
 .panel-body {
     display: flex;
     flex-direction: column;
@@ -413,7 +436,7 @@ textarea {
     width: 210mm;
     min-height: 297mm;
     margin: 0 auto;
-    padding: 14mm 15mm;
+    padding: 10.5mm 11mm;
     background: #fff;
     color: #1f2328;
     font-size: 10.5pt;
@@ -531,11 +554,15 @@ textarea {
     font-weight: 700;
 }
 
+.r-entry-main {
+    min-width: 0;
+}
+
 .resume .r-link {
-    margin-left: 6px;
+    margin-top: 1px;
     color: var(--accent);
     font-size: 9pt;
-    font-weight: 400;
+    overflow-wrap: anywhere;
 }
 
 .r-sub,
@@ -610,7 +637,7 @@ textarea {
 }
 
 .tpl-modern .r-aside {
-    padding: 12mm 7mm;
+    padding: 9mm 5mm;
     background: var(--accent);
     color: #fff;
 }
@@ -645,7 +672,7 @@ textarea {
 }
 
 .tpl-modern .r-main {
-    padding: 12mm 9mm;
+    padding: 9mm 7mm;
 }
 
 .tpl-modern .r-main .r-header {
@@ -686,7 +713,7 @@ textarea {
 @media print {
     @page {
         size: A4;
-        margin: 10mm 12mm;
+        margin: 7.5mm 9mm;
     }
 
     .r-section {
