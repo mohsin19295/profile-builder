@@ -3,64 +3,60 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Profile-Builder</title>
+    <title>Profile Builder</title>
 </head>
 
 <body>
-</script>
-    <div id="main">
-        <h1>Profile Builder</h1>
-        <div class="container">
-            <form class="input-form" onkeyup="handleForm(event)">
-                <div>
-                    <input type="text" id="hname" placeholder="Heading Name">
-                </div>
-                <div>
-                    <input type="text" id="fname" placeholder="First Name">
-                    <input type="text" id="lname" placeholder="Last Name">
-                </div>
-                <div>
-                    <input type="text" id="city" placeholder="City">
-                    <input type="text" id="state" placeholder="State">
-                </div>
-                <div>
-                    <input type="text" id="hdegree" placeholder="Qualification">
-                    <select id="selectOption">
-                        <option value="School / University">School / University</option>
-                        <option value="school">school</option>
-                        <option value="university">university</option>
-                    </select>
-                </div>
-                <div>
-                <input type="text" id="cname" placeholder="College / University">
-                <input type='file' accept="image/*" id="readUrl">
-                </div>
-            </form>
-            <div class="display">
-                <div class="display-header">
-               <img id="uploadedImg" src="https://i.postimg.cc/HWr9N9tq/Mohsin-modified.png">
-               <h2 id="h2-hname"></h2>
-            </div>
-                <div class="display-content">
-                    <span>Hi, my name is<span id="fname-span"></span><span id="lname-span"></span></span><span> I am
-                    from</span><span id="city-span"></span><span id="state-span"></span><span> I have completed
-                    my</span><span id="hdegree-span"></span><span> from</span><span id="cname-span"></span><span
-                    id="option-span"></span>
-                </div>
-                <div id="translate-div">
-                    <div id="google_translate_element"></div>
-                    <button id="save">Save</button>
-                </div>
-            </div>
+    <header class="app-header">
+        <div>
+            <h1>Profile Builder</h1>
+            <p>Fill in your details and the resume updates live. Everything is saved in this browser.</p>
         </div>
-        <div id="data"></div>
-    </div>
+        <div class="toolbar">
+            <button type="button" class="btn" data-cmd="sample">Load sample</button>
+            <button type="button" class="btn" data-cmd="clear">Clear all</button>
+            <button type="button" class="btn" data-cmd="import">Import JSON</button>
+            <button type="button" class="btn" data-cmd="export-json">Export JSON</button>
+            <button type="button" class="btn primary" data-cmd="export-word">Download Word</button>
+            <button type="button" class="btn primary" data-cmd="export-pdf"
+                title="Opens the print dialog. Choose 'Save as PDF' as the destination.">Download PDF</button>
+            <input type="file" id="importInput" accept="application/json,.json" hidden>
+        </div>
+    </header>
+
+    <main class="app">
+        <form id="editor" class="editor" autocomplete="on" novalidate></form>
+
+        <section class="preview-pane" aria-label="Resume preview">
+            <div class="design-bar">
+                <label>Template
+                    <select data-bind="settings.template">
+                        <option value="classic">Classic</option>
+                        <option value="modern">Modern (sidebar)</option>
+                    </select>
+                </label>
+                <label>Font
+                    <select data-bind="settings.font">
+                        <option value="sans">Sans-serif</option>
+                        <option value="serif">Serif</option>
+                    </select>
+                </label>
+                <label>Accent
+                    <input type="color" data-bind="settings.accent">
+                </label>
+                <span class="design-hint">PDF: choose "Save as PDF" in the print dialog.</span>
+            </div>
+            <div class="preview-scroll">
+                <article id="resume" class="resume"></article>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <script src="./script.js"></script>
 </body>
 
 </html>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-<script src="./script.js"></script>
